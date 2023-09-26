@@ -7,16 +7,16 @@ function MenuItem({ pizza }) {
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
   const dispatch = useDispatch();
 
-  const handleAddToAcrt = () => {
+  function handleAddToCart() {
     const newItem = {
       pizzaId: id,
-      name: 'Mediterranean',
+      name,
       quantity: 1,
-      unitPrice: unitPrice,
+      unitPrice,
       totalPrice: unitPrice * 1,
     };
     dispatch(addItem(newItem));
-  };
+  }
 
   return (
     <li className='flex gap-4 py-2'>
@@ -40,7 +40,7 @@ function MenuItem({ pizza }) {
           )}
 
           {!soldOut && (
-            <Button type='small' onClick={handleAddToAcrt}>
+            <Button type='small' onClick={handleAddToCart}>
               Add to cart
             </Button>
           )}
